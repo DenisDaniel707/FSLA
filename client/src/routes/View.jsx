@@ -26,11 +26,11 @@ import {
     Dropdown
 } from 'antd';
 import {
-    FileExcelOutlined,
     PlusOutlined,
     LeftOutlined,
     DownOutlined
 } from '@ant-design/icons';
+import ExportCSV from '../components/ExportCSV'
 
 const View = () => {
 
@@ -236,16 +236,7 @@ const View = () => {
         },
     };
 
-    const validateMessages = {
-        required: '${label} is required!',
-        types: {
-          email: '${label} is not validate email!',
-          number: '${label} is not a validate number!',
-        },
-        number: {
-          range: '${label} must be between ${min} and ${max}',
-        },
-    };
+    const validateMessages = {};
 
     const onFinish = values => {
         console.log(values);
@@ -798,7 +789,7 @@ const View = () => {
                 {/* Export Excel Button */}
                     <Col span={6}>
                         <div style={{padding: '0 0', textAlign: 'right'}}>
-                            <Button style={{width: '95px'}}><FileExcelOutlined/>Export</Button>
+                            <ExportCSV/>
                         </div>
                     </Col>
                 </Row>

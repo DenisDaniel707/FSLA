@@ -11,14 +11,11 @@ import {
     Input,
     Menu,
     Dropdown,
-    Col,
-    Button
   } from 'antd';
 import { useHistory } from 'react-router-dom';
 import {
     RightOutlined,
     DownOutlined,
-    FileExcelOutlined
   } from '@ant-design/icons';
 
 const MyTable = () => {

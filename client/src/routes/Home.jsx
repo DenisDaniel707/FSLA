@@ -7,7 +7,6 @@ import MyHeader from '../components/MyHeader';
 import MyContent from '../components/MyContent';
 import MyFooter from '../components/MyFooter';
 import { RecordsContext } from '../context/RecordsContext';
-import { DetailsContext } from '../context/DetailsContext';
 
 const Home = (props) => {
     const { setRecords } = useContext(RecordsContext);

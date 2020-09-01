@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import fsladb from '../apis/fsladb';
 import { Button } from 'antd';
 import { RecordsContext } from '../context/RecordsContext';
-import { DetailsContext } from '../context/DetailsContext';
 import {
     FileExcelOutlined,
   } from '@ant-design/icons';
@@ -12,7 +11,7 @@ const ExportCSV = () => {
 
     const { records } = useContext(RecordsContext);
 
-    var option={};
+    var option = {};
     let dataTable = [];
     var count = 0;
     const fun = async () => {
@@ -60,7 +59,30 @@ const ExportCSV = () => {
         {
             sheetData:dataTable,
             sheetName:'sheet',
-                    sheetHeader:['ID', 'Fiscal Year','Plant','BU', 'Product Group', 'Audit Status', 'Project', 'Country', 'Lead Auditor', 'Co Auditor', 'FSML Target', 'Domain', 'Domain Location', 'FSML Result', 'Issues', 'Corrective Actions', 'Audit Result', 'Audit Reviewer', 'Due Date', 'Action Status', 'Last Review', 'Comments'],
+                    sheetHeader:[
+                        'ID',
+                        'Fiscal Year',
+                        'Plant',
+                        'BU',
+                        'Product Group',
+                        'Audit Status',
+                        'Project',
+                        'Country',
+                        'Lead Auditor',
+                        'Co Auditor',
+                        'FSML Target',
+                        'Domain',
+                        'Domain Location',
+                        'FSML Result',
+                        'Issues',
+                        'Corrective Actions',
+                        'Audit Result',
+                        'Audit Reviewer',
+                        'Due Date',
+                        'Action Status',
+                        'Last Review',
+                        'Comments'
+                    ],
         }
         ];
 

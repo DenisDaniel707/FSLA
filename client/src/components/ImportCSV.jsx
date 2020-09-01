@@ -12,7 +12,7 @@ const ImportCSV = () => {
     const { records } = useContext(RecordsContext);
 
     const handleImport = () => {
-        
+        console.log(records)
     }
 
     return (
