@@ -6,6 +6,7 @@ import {
     FileExcelOutlined,
   } from '@ant-design/icons';
 import ExportJsonExcel from 'js-export-excel';
+import moment from 'moment';
 
 const ExportCSV = () => {
 
@@ -40,9 +41,9 @@ const ExportCSV = () => {
                             'Corrective Actions': details.data.data.details[j].c_actions,
                             'Audit Result': details.data.data.details[j].a_res,
                             'Audit Reviewer': details.data.data.details[j].a_rev,
-                            'Due Date': details.data.data.details[j].a_due,
+                            'Due Date': moment(details.data.data.details[j].a_due).utc().local().format('YYYY-MM-DD'),
                             'Action Status': details.data.data.details[j].a_stat,
-                            'Last Reviewed': details.data.data.details[j].last_rev,
+                            'Last Reviewed': moment(details.data.data.details[j].last_rev).utc().local().format('YYYY-MM-DD'),
                             'Comments': details.data.data.details[j].comm
                         }
                         dataTable.push(obj);
