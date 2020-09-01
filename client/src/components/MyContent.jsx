@@ -42,6 +42,7 @@ const MyContent = () => {
         visible: false,
         confirmLoading: false
     };
+
     const [state, setState] = useState(s);
 
     const showModal = () => {
