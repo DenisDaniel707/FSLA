@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import '../../node_modules/antd/dist/antd.css';
-import { RecordsContext, RecordsContextProvider } from '../context/RecordsContext';
+import { RecordsContext } from '../context/RecordsContext';
 import {
     Divider,
     Button,
@@ -8,20 +8,17 @@ import {
     Row,
     Col,
     Input,
-    InputNumber,
     Form,
     Layout,
     Breadcrumb,
     Modal,
     Menu,
     Dropdown,
-    Popconfirm
   } from 'antd';
 import MyTable from './MyTable'
 import {
     PlusOutlined,
     DownOutlined,
-    FileExcelOutlined
   } from '@ant-design/icons';
 import fsladb from '../apis/fsladb';
 import ExportCSV from './ExportCSV'
@@ -34,7 +31,7 @@ const Content = Layout.Content;
 
 const MyContent = () => {
 
-    const {records, setRecords} = useContext(RecordsContext);
+    const { setRecords } = useContext(RecordsContext);
 
     // New Record Modal
     const s = {

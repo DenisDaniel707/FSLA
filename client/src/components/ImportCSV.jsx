@@ -1,8 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import fsladb from '../apis/fsladb';
-import { Button, message, Upload, Modal } from 'antd';
-import { RecordsContext } from '../context/RecordsContext';
-import { DetailsContext } from '../context/DetailsContext';
+import { Button, Modal } from 'antd';
 import {
     FileExcelTwoTone,
   } from '@ant-design/icons';
@@ -17,9 +15,8 @@ const ImportCSV = () => {
         var id = 0;
         readXlsxFile(e.target.files[0]).then(async (rows) => {
             const sz = rows.length - 1;
-            const col_names = rows[0];
             for(var i = 1; i <= sz; i++) {
-                if(JSON.stringify(rows[i].slice(1,11)) == JSON.stringify(rows[i-1].slice(1,11))) {
+                if(JSON.stringify(rows[i].slice(1,11)) === JSON.stringify(rows[i-1].slice(1,11))) {
                     console.log(rows[i].slice(11,22))
                     await fsladb.post(`/details/${id}`, {
                         dom: rows[i][11],
@@ -70,8 +67,6 @@ const ImportCSV = () => {
             visible: false,
         })
     }
-
-    const { setRecords } = useContext(RecordsContext);
 
     const p = {
         ModalText: "Content of the modal",
