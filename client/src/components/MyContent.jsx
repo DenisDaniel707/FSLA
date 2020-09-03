@@ -96,7 +96,6 @@ const MyContent = () => {
     const handleSearch = async (x) => {
         try {
             const response = await fsladb.get(`records/${x}`)
-            console.log(response)
             setRecords(response.data.data.records)
         } catch (err) {
             console.error(err.message)

@@ -305,11 +305,13 @@ const View = () => {
     }
 
     const formatTime = (a) => {
-        const date = moment(a).utc().local().format('YYYY-MM-DD')
+        const date = moment(a).utc().local().format('YYYY.MM.DD')
         return date;
     }
 
     const test_na = t => {
+        if(t === null)
+            return ' ';
         if(t === 'na')
             return t;
         else
@@ -456,7 +458,7 @@ const View = () => {
             ],
             onFilter: ((value, record) => record.a_stat.indexOf(value) === 0),
             render: dataIndex => (
-                dataIndex = dataIndex.toLowerCase(),
+                dataIndex = (dataIndex && dataIndex.toLowerCase()),
                 <Tag color={dataIndex === 'done' ? 'green' : (dataIndex === 'open' ? 'lime' : (dataIndex === 'overdue' ? 'yellow' : (dataIndex === 'canceled' ? 'red' : '')))}>
                     {dataIndex}
                 </Tag>
