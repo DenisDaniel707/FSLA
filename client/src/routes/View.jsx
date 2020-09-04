@@ -786,14 +786,14 @@ const View = () => {
                     </Col>
 
                 {/* The space between */}
-                    <Col span={8} />
+                    <Col span={14} />
 
-                {/* Export Excel Button */}
+                {/* Export Excel Button
                     <Col span={6}>
                         <div style={{padding: '0 0', textAlign: 'right'}}>
                             <ExportCSV/>
                         </div>
-                    </Col>
+                    </Col> */}
                 </Row>
 
                 {/* Details Table */}
