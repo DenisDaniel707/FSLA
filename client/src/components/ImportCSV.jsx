@@ -11,7 +11,7 @@ import {
 const ImportCSV = () => {
 
     // Get and parse excel file
-    const parse = (e) => {
+    const parse = async (e) => {
         var id = 0;
         readXlsxFile(e.target.files[0]).then(async (rows) => {
             const sz = rows.length - 1;
@@ -65,6 +65,11 @@ const ImportCSV = () => {
         })
         importSetState({
             visible: false,
+        })
+        const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+        await fsladb.post(`/history`, {
+            info: "Imported Excel File",
+            h_date: d
         })
     }
 

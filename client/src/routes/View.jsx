@@ -145,7 +145,11 @@ const View = () => {
                 last_rev: lastRev,
                 comm
             })
-            console.log(response)
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Created Weakness ${response.data.details.v_id}: ${dom} ${domLoc}`,
+                h_date: d
+            })
         } catch (err) {
             console.error(err.message)
         }
@@ -161,7 +165,7 @@ const View = () => {
         }, 250);
     };
 
-    const editHandleOk = async(vid) => {
+    const editHandleOk = async() => {
         editSetState({
             visible2: true,
             ModalText: "Adding",
@@ -169,6 +173,11 @@ const View = () => {
         });
 
         try {
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Edited Weakness ${id}: ${dom} ${domLoc}`,
+                h_date: d
+            })
             const response = await fsladb.put(`/details/${editState.v_id}`, {
                 dom,
                 dom_loc: domLoc,
@@ -254,8 +263,13 @@ const View = () => {
         fetchData();
     },[])
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (id, dm, dl) => {
         try {
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Deleted Weakness ${id}: ${dm} ${dl}`,
+                h_date: d
+            })
             await fsladb.delete(`/details/${id}`);
             setDetails(details.filter(detail => {
                 return detail.v_id !== id
@@ -265,7 +279,7 @@ const View = () => {
         }
     }
 
-    const handleView = (id) => {
+    const handleView = () => {
         try {
             history.push(`/`)
         } catch (err) {
@@ -488,7 +502,7 @@ const View = () => {
                 <div>
                     <Popconfirm
                         title="Delete Weakness?"
-                        onConfirm={() => handleDelete(details.v_id)}
+                        onConfirm={() => handleDelete(details.v_id, details.dom, details.dom_loc)}
                         okText="Yes"
                         cancelText="No"
                     > <a href='#'>Delete</a><br/>
@@ -602,7 +616,7 @@ const View = () => {
 
                 {/* Breadcrumbs */}
                 <Breadcrumb style={{ margin: '15px 35px', textAlign: 'left' }}>
-                    <Breadcrumb.Item>Audits</Breadcrumb.Item>
+                    <Breadcrumb.Item href onClick={handleView}>Audits</Breadcrumb.Item>
                     <Breadcrumb.Item>Weaknesses</Breadcrumb.Item>
                 </Breadcrumb>
 

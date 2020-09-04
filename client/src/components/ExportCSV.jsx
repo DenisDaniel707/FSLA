@@ -6,6 +6,7 @@ import {
     FileExcelOutlined,
   } from '@ant-design/icons';
 import ExportJsonExcel from 'js-export-excel';
+import moment from 'moment'
 
 const ExportCSV = () => {
 
@@ -52,6 +53,14 @@ const ExportCSV = () => {
         }
     }
 
+    const exp = async () => {
+        const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+        await fsladb.post(`/history`, {
+            info: "Exported Audits",
+            h_date: d
+        })
+    }
+
     fun()
 
     option.fileName = 'FSLA Export'
@@ -89,7 +98,7 @@ const ExportCSV = () => {
     var toExcel = new ExportJsonExcel(option);
 
     return(
-        <Button style={{width: '95px', color: '#d9b800'}} onClick={() => toExcel.saveExcel()}><FileExcelOutlined/>Export</Button>
+        <Button style={{width: '95px', color: '#d9b800'}} onClick={() => {exp(); toExcel.saveExcel()}}><FileExcelOutlined/>Export</Button>
     )
 }
 

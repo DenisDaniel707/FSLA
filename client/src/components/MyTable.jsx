@@ -17,18 +17,24 @@ import {
     RightOutlined,
     DownOutlined,
   } from '@ant-design/icons';
+import moment from 'moment'
 
 const MyTable = () => {
 
     const {records, setRecords} = useContext(RecordsContext);
     let history = useHistory()
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (id, plant, proj) => {
         try {
             await fsladb.delete(`records/${id}`);
             setRecords(records.filter(record => {
                 return record.id !== id
             }))
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Deleted Audit ${id}: ${plant} ${proj}`,
+                h_date: d
+            })
         } catch (err) {
             console.error(err.message);
         }
@@ -149,6 +155,7 @@ const MyTable = () => {
     };
 
     const handleOk = async(id) => {
+        //for a more detailed history pass the fields as parameters here (from table)
         setState({
             visible: true,
             ModalText: "Adding",
@@ -156,6 +163,11 @@ const MyTable = () => {
         });
 
         try {
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Edited Audit ${id}: ${plant} ${proj}`,
+                h_date: d
+            })
             const response = await fsladb.put(`/records/${id}`, {
                 fy,
                 plant,
@@ -377,7 +389,7 @@ const MyTable = () => {
             align: 'center',
             render: (records) => (
                 <div>
-                    <Popconfirm title="Delete Audit?" onConfirm={() => handleDelete(records.id)} okText="Yes" cancelText="No">
+                    <Popconfirm title="Delete Audit?" onConfirm={() => handleDelete(records.id, records.plant, records.proj)} okText="Yes" cancelText="No">
                         <a>Delete</a><br/>
                     </Popconfirm>
 
@@ -402,6 +414,7 @@ const MyTable = () => {
     return (
         <div>
             <Table columns={columns} dataSource={records} onChange={onChange} size='middle' bordered/>
+            {/* for a more detailed history pass the fields as parameters through handleok */}
             <Modal title="Edit Audit" visible={visible} onOk={() => handleOk(state.id)} keyboard confirmLoading={confirmLoading} onCancel={handleCancel}>
                 <Form {...layout} name="nest-messages" onFinish={onFinish}>
                     <Form.Item name={['user', 'fy']} label="Fiscal Year">

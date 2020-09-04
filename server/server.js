@@ -126,6 +126,22 @@ app.post("/api/v1/details/:id", async (req, res) => {
     }
 })
 
+// History
+app.post("/api/v1/history", async (req, res) => {
+    try {
+        const results = await db.query("INSERT INTO history (info, h_date) VALUES ($1, $2) RETURNING *", [
+            req.body.info,
+            req.body.h_date
+        ]);
+        res.status(201).json({
+            status: "success",
+            history: results.rows[0]
+        });
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // Update record
 app.put("/api/v1/records/:id", async (req, res) => {
     try {

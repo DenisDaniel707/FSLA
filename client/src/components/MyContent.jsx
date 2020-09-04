@@ -23,8 +23,8 @@ import {
 import fsladb from '../apis/fsladb';
 import ExportCSV from './ExportCSV'
 import ImportCSV from './ImportCSV'
+import moment from 'moment'
 
-const { Title } = Typography;
 const { Search } = Input;
 
 const Content = Layout.Content;
@@ -67,6 +67,11 @@ const MyContent = () => {
                 lead_aud: leadAud,
                 co_aud: coAud,
                 fsml_t: fsmlT
+            })
+            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            await fsladb.post(`/history`, {
+                info: `Created Audit ${response.data.records.id}: ${plant} ${proj}`,
+                h_date: d
             })
         } catch (err) {
             console.error(err.message)
