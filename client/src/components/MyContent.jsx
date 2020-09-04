@@ -195,15 +195,14 @@ const MyContent = () => {
 
             {/* Divider */}
             <div align="left">
-                <Title level={3} style={{marginBottom: '27px', marginLeft: '94px'}}>Functional Safety Location Audits</Title>
-                <Divider />
+                <Divider style={{marginTop: '0px', marginBottom: '20px'}}/>
             </div>
 
             <Row gutter={[32, 32]}>
                 {/* New Button */}
                 <Col span={3}>
                     <div style={{padding: '0 0'}}>
-                        <Button style={{width: '150px'}} onClick={() => showModal()}><PlusOutlined/>New Audit</Button>
+                        <Button style={{width: '150px', color: '#d9b800'}} onClick={() => showModal()}><PlusOutlined/>New Audit</Button>
                         <Modal
                             title="New Audit"
                             visible={visible}

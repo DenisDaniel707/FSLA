@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import fsladb from '../apis/fsladb';
 import { Button, Modal } from 'antd';
 import {
-    FileExcelTwoTone,
+    FileExcelOutlined,
   } from '@ant-design/icons';
   import readXlsxFile from 'read-excel-file'
   import moment from 'moment'
@@ -98,8 +98,8 @@ const ImportCSV = () => {
 
     return (
         <div>
-            <Button style={{width: '95px'}} onClick={() => importShowModal()} >
-                <FileExcelTwoTone/>
+            <Button style={{width: '95px', color: '#d9b800'}} onClick={() => importShowModal()} >
+                <FileExcelOutlined/>
                 Import
             </Button>
             <Modal

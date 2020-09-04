@@ -89,7 +89,7 @@ const ExportCSV = () => {
     var toExcel = new ExportJsonExcel(option);
 
     return(
-        <Button style={{width: '95px'}} onClick={() => toExcel.saveExcel()}><FileExcelOutlined/>Export</Button>
+        <Button style={{width: '95px', color: '#d9b800'}} onClick={() => toExcel.saveExcel()}><FileExcelOutlined/>Export</Button>
     )
 }
 
