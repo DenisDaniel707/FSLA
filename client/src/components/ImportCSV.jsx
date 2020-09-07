@@ -63,14 +63,16 @@ const ImportCSV = () => {
                 })
             }
         })
-        importSetState({
-            visible: false,
-        })
         const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
         await fsladb.post(`/history`, {
             info: "Imported Excel File",
             h_date: d
         })
+        setTimeout(() => {
+            importSetState({
+                visible: false,
+            })
+        }, 2000);
     }
 
     const p = {
