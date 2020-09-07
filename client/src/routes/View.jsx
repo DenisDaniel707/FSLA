@@ -147,7 +147,7 @@ const View = () => {
             })
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Created Weakness ${response.data.details.v_id}: ${dom} ${domLoc}`,
+                info: `Created Weakness ${response.data.details.v_id}: Domain: ${dom}, Location: ${domLoc}`,
                 h_date: d
             })
         } catch (err) {
@@ -175,7 +175,7 @@ const View = () => {
         try {
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Edited Weakness ${editState.v_id}: ${dom} ${domLoc}`,
+                info: `Edited Weakness ${editState.v_id}: Domain: ${dom}, Location: ${domLoc}`,
                 h_date: d
             })
             const response = await fsladb.put(`/details/${editState.v_id}`, {
@@ -267,7 +267,7 @@ const View = () => {
         try {
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Deleted Weakness ${id}: ${dm} ${dl}`,
+                info: `Deleted Weakness ${id}: Domain: ${dm}, Location: ${dl}`,
                 h_date: d
             })
             await fsladb.delete(`/details/${id}`);

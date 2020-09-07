@@ -70,7 +70,7 @@ const MyContent = () => {
             })
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Created Audit ${response.data.records.id}: ${plant} ${proj}`,
+                info: `Created Audit ${response.data.records.id}: Plant: ${plant}, Project: ${proj}`,
                 h_date: d
             })
         } catch (err) {

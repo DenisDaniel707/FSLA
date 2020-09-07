@@ -32,7 +32,7 @@ const MyTable = () => {
             }))
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Deleted Audit ${id}: ${plant} ${proj}`,
+                info: `Deleted Audit ${id}: Plant: ${plant}, Project: ${proj}`,
                 h_date: d
             })
         } catch (err) {
@@ -165,7 +165,7 @@ const MyTable = () => {
         try {
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Edited Audit ${id}: ${plant} ${proj}`,
+                info: `Edited Audit ${id}: Plant: ${plant}, Project: ${proj}`,
                 h_date: d
             })
             const response = await fsladb.put(`/records/${id}`, {
