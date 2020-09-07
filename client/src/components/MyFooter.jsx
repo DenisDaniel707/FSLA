@@ -6,7 +6,7 @@ const { Footer } = Layout;
 const MyFooter = () => {
     return (
         <Footer style={{ padding: '10px 75px', textAlign: 'center' }}>
-            FSLA Tool © 2020
+            For feedback regarding the tool contact: ardelean_denis707@yahoo.com
         </Footer>
     )
 }
