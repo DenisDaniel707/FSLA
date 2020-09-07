@@ -7,6 +7,7 @@ import Home from './routes/Home';
 import View from './routes/View';
 import { RecordsContextProvider } from './context/RecordsContext';
 import { DetailsContextProvider } from './context/DetailsContext';
+import { HistoryContextProvider } from './context/HistoryContext';
 
 //Route handler
 //The switch tag is there to tell the router not to look for another route when it matched it
@@ -15,6 +16,7 @@ const App = () => {
     return (
         <RecordsContextProvider>
         <DetailsContextProvider>
+        <HistoryContextProvider>
             <div className="App">
                 <Router>
                     <Switch>
@@ -23,6 +25,7 @@ const App = () => {
                     </Switch>
                 </Router>
             </div>
+        </HistoryContextProvider>
         </DetailsContextProvider>
         </RecordsContextProvider>
     );

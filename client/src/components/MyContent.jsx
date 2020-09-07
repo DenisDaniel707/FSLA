@@ -68,7 +68,7 @@ const MyContent = () => {
                 co_aud: coAud,
                 fsml_t: fsmlT
             })
-            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Created Audit ${response.data.records.id}: ${plant} ${proj}`,
                 h_date: d

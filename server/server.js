@@ -76,6 +76,22 @@ app.get("/api/v1/detail/:x/:y", async (req, res) => {
     }
 })
 
+// Get History
+app.get("/api/v1/history", async (req, res) => {
+    try {
+        const results = await db.query("SELECT * FROM history ORDER BY h_id DESC");
+        res.status(200).json({
+            status: "success",
+            results: results.rows.length,
+            data: {
+                history: results.rows
+            }
+        })
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // Create record
 app.post("/api/v1/records", async (req, res) => {
     try {
@@ -126,7 +142,7 @@ app.post("/api/v1/details/:id", async (req, res) => {
     }
 })
 
-// History
+// Create History
 app.post("/api/v1/history", async (req, res) => {
     try {
         const results = await db.query("INSERT INTO history (info, h_date) VALUES ($1, $2) RETURNING *", [

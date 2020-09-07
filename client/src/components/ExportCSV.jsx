@@ -54,7 +54,7 @@ const ExportCSV = () => {
     }
 
     const exp = async () => {
-        const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+        const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
         await fsladb.post(`/history`, {
             info: "Exported Audits",
             h_date: d

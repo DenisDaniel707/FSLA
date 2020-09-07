@@ -30,7 +30,7 @@ const MyTable = () => {
             setRecords(records.filter(record => {
                 return record.id !== id
             }))
-            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Deleted Audit ${id}: ${plant} ${proj}`,
                 h_date: d
@@ -163,7 +163,7 @@ const MyTable = () => {
         });
 
         try {
-            const d = moment(new Date()).utc().local().format('YYYY-MM-DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Edited Audit ${id}: ${plant} ${proj}`,
                 h_date: d
