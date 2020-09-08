@@ -4,8 +4,8 @@ import { Button, Modal } from 'antd';
 import {
     FileExcelOutlined,
   } from '@ant-design/icons';
-  import readXlsxFile from 'read-excel-file'
-  import moment from 'moment'
+import readXlsxFile from 'read-excel-file'
+import moment from 'moment'
 
 
 const ImportCSV = () => {
@@ -105,7 +105,7 @@ const ImportCSV = () => {
 
     return (
         <div>
-            <Button style={{width: '95px', color: '#d9b800'}} onClick={() => importShowModal()} >
+            <Button style={{width: "96px", height: "32px", background: "#0a2b59", color: "#f0cc00", position: "relative", left: "19px", top: "-110px"}} onClick={() => importShowModal()} >
                 <FileExcelOutlined/>
                 Import
             </Button>

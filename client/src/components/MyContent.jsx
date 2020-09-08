@@ -4,7 +4,6 @@ import { RecordsContext } from '../context/RecordsContext';
 import {
     Divider,
     Button,
-    Typography,
     Row,
     Col,
     Input,
@@ -22,7 +21,6 @@ import {
   } from '@ant-design/icons';
 import fsladb from '../apis/fsladb';
 import ExportCSV from './ExportCSV'
-import ImportCSV from './ImportCSV'
 import moment from 'moment'
 
 const { Search } = Input;
@@ -294,10 +292,7 @@ const MyContent = () => {
                                         </Dropdown>
                                     }/>
                                 </Form.Item>
-                                    <div style={{padding: '0 0', textAlign: 'center'}}>
-                                        <ImportCSV/>
-                                    </div>
-                                </Form>
+                            </Form>
                         </Modal>
                     </div>
                 </Col>
