@@ -165,7 +165,7 @@ const MyTable = () => {
         try {
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Edited Audit ${id}: Plant: ${plant}, Project: ${proj}`,
+                info: `Edited Audit ${id}: Plant: ${state.plant}, Project: ${state.proj}`,
                 h_date: d
             })
             const response = await fsladb.put(`/records/${id}`, {
@@ -216,14 +216,14 @@ const MyTable = () => {
 
     const auStatMenu = (
         <Menu>
-          <Menu.Item key="0" onClick={() => setauStat("Performed")}>
-            Performed
+          <Menu.Item key="0" onClick={() => setauStat("performed")}>
+            performed
           </Menu.Item>
-          <Menu.Item key="1" onClick={() => setauStat("Canceled")}>
-            Canceled
+          <Menu.Item key="1" onClick={() => setauStat("canceled")}>
+            canceled
           </Menu.Item>
-          <Menu.Item key="2" onClick={() => setauStat("Finished")}>
-            Finished
+          <Menu.Item key="2" onClick={() => setauStat("finished")}>
+            finished
           </Menu.Item>
         </Menu>
     );
@@ -252,7 +252,7 @@ const MyTable = () => {
             width: 55,
             align: 'center',
             sorter: (a, b) => a.id - b.id,
-            render: (text, record, i) => i + 1,
+            //render: (text, record, i) => i + 1,
         },
         {
             title: 'Fiscal Year',
@@ -299,20 +299,20 @@ const MyTable = () => {
             filters: [
                 {
                     text: 'performed',
-                    value: 'performed'
+                    value: 'performed',
                 },
                 {
                     text: 'canceled',
-                    value: 'canceled'
+                    value: 'canceled',
                 },
                 {
                     text: 'finished',
-                    value: 'finished'
+                    value: 'finished',
                 },
             ],
             onFilter: ((value, record) => record.au_stat.indexOf(value) === 0),
             render: dataIndex => (
-                dataIndex = dataIndex.toLowerCase(),
+                dataIndex = dataIndex.toLowerCase() &&
                 <Tag color={dataIndex === 'performed' ? 'green' : (dataIndex === 'canceled' ? 'red' : (dataIndex === 'finished' ? 'blue' : ''))}>{dataIndex}</Tag>
             ),
             sorter: ((a, b) => compareAlpha(a.au_stat, b.au_stat)),
@@ -378,7 +378,7 @@ const MyTable = () => {
             ],
             onFilter: ((value, record) => record.fsml_t.indexOf(value) === 0),
             render: dataIndex => (
-                dataIndex = dataIndex.toUpperCase(),
+                dataIndex = dataIndex.toUpperCase() &&
                 <Tag color={dataIndex === 'A' ? 'green' : (dataIndex === 'B' ? 'lime' : (dataIndex === 'C' ? 'yellow' : (dataIndex === 'D' ? 'red' : '')))}>{dataIndex}</Tag>
             ),
             sorter: ((a, b) => compareAlpha(a.fsml_t, b.fsml_t)),
@@ -408,7 +408,7 @@ const MyTable = () => {
     ];
 
     function onChange(pagination, filters, sorter, extra) {
-        console.log('params', pagination, filters, sorter, extra);
+        //console.log('params', pagination, filters, sorter, extra);
     }
 
     return (

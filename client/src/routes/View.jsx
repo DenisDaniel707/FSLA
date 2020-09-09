@@ -175,7 +175,7 @@ const View = () => {
         try {
             const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
             await fsladb.post(`/history`, {
-                info: `Edited Weakness ${editState.v_id}: Domain: ${dom}, Location: ${domLoc}`,
+                info: `Edited Weakness ${editState.v_id}: Domain: ${editState.dom}, Location: ${editState.dom_loc}`,
                 h_date: d
             })
             const response = await fsladb.put(`/details/${editState.v_id}`, {
@@ -355,7 +355,7 @@ const View = () => {
             width: 55,
             align: 'center',
             sorter: (a, b) => a.v_id - b.v_id,
-            render: (text, record, i) => i + 1,
+            //render: (text, record, i) => i + 1,
         },
         {
             title: 'Domain',

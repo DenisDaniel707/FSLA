@@ -77,9 +77,9 @@ app.get("/api/v1/detail/:x/:y", async (req, res) => {
 })
 
 // Get History
-app.get("/api/v1/history", async (req, res) => {
+app.get("/api/v1/history/:n", async (req, res) => {
     try {
-        const results = await db.query("SELECT * FROM history ORDER BY h_id DESC");
+        const results = await db.query(`SELECT * FROM history ORDER BY h_id DESC LIMIT ${req.params.n}`); //LIMIT number
         res.status(200).json({
             status: "success",
             results: results.rows.length,
