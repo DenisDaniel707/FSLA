@@ -385,6 +385,7 @@ const MyTable = () => {
         },
         {
             title: 'Action',
+            width: 100,
             key: 'action',
             align: 'center',
             render: (records) => (
