@@ -15,7 +15,7 @@ app.use(express.json());
 // Get all records
 app.get("/api/v1/records", async (req, res) => {
     try {
-        const results = await db.query("SELECT * FROM records WHERE deleted = false ORDER BY fy ASC");
+        const results = await db.query("SELECT * FROM records WHERE deleted = false ORDER BY fy,id ASC");
         res.status(200).json({
             status: "success",
             results: results.rows.length,

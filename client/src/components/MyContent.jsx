@@ -159,14 +159,14 @@ const MyContent = () => {
 
     const auStatMenu = (
         <Menu>
-          <Menu.Item key="0" onClick={() => setauStat("Performed")}>
-            Performed
+          <Menu.Item key="0" onClick={() => setauStat("performed")}>
+            performed
           </Menu.Item>
-          <Menu.Item key="1" onClick={() => setauStat("Canceled")}>
-            Canceled
+          <Menu.Item key="1" onClick={() => setauStat("canceled")}>
+            canceled
           </Menu.Item>
-          <Menu.Item key="2" onClick={() => setauStat("Finished")}>
-            Finished
+          <Menu.Item key="2" onClick={() => setauStat("finished")}>
+            finished
           </Menu.Item>
         </Menu>
     );

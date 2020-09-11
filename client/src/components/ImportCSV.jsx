@@ -7,7 +7,6 @@ import {
 import readXlsxFile from 'read-excel-file'
 import moment from 'moment'
 
-
 const ImportCSV = () => {
 
     // Get and parse excel file
