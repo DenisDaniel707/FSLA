@@ -66,7 +66,7 @@ const MyContent = () => {
                 co_aud: coAud,
                 fsml_t: fsmlT
             })
-            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('DD.MM.YYYY HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Created Audit ${response.data.records.id}: Plant: ${plant}, Project: ${proj}`,
                 h_date: d
@@ -206,13 +206,7 @@ const MyContent = () => {
                 <Col span={3}>
                     <div style={{padding: '0 0'}}>
                         <Button style={{width: '150px', color: '#d9b800'}} onClick={() => showModal()}><PlusOutlined/>New Audit</Button>
-                        <Modal
-                            title="New Audit"
-                            visible={visible}
-                            onOk={handleOk}
-                            confirmLoading={confirmLoading}
-                            onCancel={handleCancel}
-                        >
+                        <Modal title="New Audit" visible={visible} centered style={{marginTop: '10px'}} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
                             <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                                 <Form.Item
                                     name={['user', 'fy']}

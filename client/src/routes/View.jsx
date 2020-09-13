@@ -145,7 +145,7 @@ const View = () => {
                 last_rev: lastRev,
                 comm
             })
-            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('DD.MM.YYYY HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Created Weakness ${response.data.details.v_id}: Domain: ${dom}, Location: ${domLoc}`,
                 h_date: d
@@ -173,7 +173,7 @@ const View = () => {
         });
 
         try {
-            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('DD.MM.YYYY HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Edited Weakness ${editState.v_id}: Domain: ${editState.dom}, Location: ${editState.dom_loc}`,
                 h_date: d
@@ -265,7 +265,7 @@ const View = () => {
 
     const handleDelete = async (id, dm, dl) => {
         try {
-            const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
+            const d = moment(new Date()).utc().local().format('DD.MM.YYYY HH:mm:ss');
             await fsladb.post(`/history`, {
                 info: `Deleted Weakness ${id}: Domain: ${dm}, Location: ${dl}`,
                 h_date: d
@@ -319,7 +319,7 @@ const View = () => {
     }
 
     const formatTime = (a) => {
-        const date = moment(a).utc().local().format('YYYY.MM.DD')
+        const date = moment(a).utc().local().format('DD.MM.YYYY')
         return date;
     }
 

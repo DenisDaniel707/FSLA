@@ -70,7 +70,7 @@ const MyHeader = () => {
                 <Button onClick={() => showModal()} style={{width: "96px", background: "#0a2b59", color: "#f0cc00", position: "relative", left: "-100px", top: "-78px"}}><HistoryOutlined/>History</Button>
                 <ImportCSV/>
             </div>
-            <Modal title={<div align="center">History</div>} visible={state.visible} onCancel={handleCancel} footer={null}>
+            <Modal title={<div align="center">History</div>} visible={state.visible} centered style={{marginTop: '10px'}} onCancel={handleCancel} footer={null}>
                 <div align="right" style={{position: 'relative', top: '-12px'}}>
                     <Checkbox onChange={(e) => handleCheck(e.target.checked)}>Show all history</Checkbox>
                 </div>
