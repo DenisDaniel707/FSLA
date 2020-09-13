@@ -27,10 +27,9 @@ import {
 } from 'antd';
 import {
     PlusOutlined,
-    LeftOutlined,
-    DownOutlined
+    DownOutlined,
+    DeleteOutlined
 } from '@ant-design/icons';
-import ExportCSV from '../components/ExportCSV'
 
 const View = () => {
 
@@ -502,6 +501,7 @@ const View = () => {
                 <div>
                     <Popconfirm
                         title="Delete Weakness?"
+                        icon={<DeleteOutlined/>}
                         onConfirm={() => handleDelete(details.v_id, details.dom, details.dom_loc)}
                         okText="Yes"
                         cancelText="No"
@@ -666,11 +666,11 @@ const View = () => {
                                         <TextArea value={cActions} onChange={e => setcActions(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 
-                                    <Form.Item name={['user', 'aRes']} label="Audit Responsible">
+                                    <Form.Item name={['user', 'aRes']} label="Action Responsible">
                                         <TextArea value={aRes} onChange={e => setaRes(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 
-                                    <Form.Item name={['user', 'aRev']} label="Audit Reviewer">
+                                    <Form.Item name={['user', 'aRev']} label="Action Reviewer">
                                         <TextArea value={aRev} onChange={e => setaRev(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 
@@ -743,11 +743,11 @@ const View = () => {
                                         <TextArea value={cActions} onChange={e => setcActions(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 
-                                    <Form.Item name='aRes' label="Audit Responsible">
+                                    <Form.Item name='aRes' label="Action Responsible">
                                         <TextArea value={aRes} onChange={e => setaRes(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 
-                                    <Form.Item name='aRev' label="Audit Reviewer">
+                                    <Form.Item name='aRev' label="Action Reviewer">
                                         <TextArea value={aRev} onChange={e => setaRev(e.target.value)} autoSize={{ minRows: 2 }}/>
                                     </Form.Item>
 

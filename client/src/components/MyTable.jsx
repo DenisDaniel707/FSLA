@@ -16,6 +16,7 @@ import { useHistory } from 'react-router-dom';
 import {
     RightOutlined,
     DownOutlined,
+    DeleteOutlined
   } from '@ant-design/icons';
 import moment from 'moment'
 
@@ -390,7 +391,7 @@ const MyTable = () => {
             align: 'center',
             render: (records) => (
                 <div>
-                    <Popconfirm title="Delete Audit?" onConfirm={() => handleDelete(records.id, records.plant, records.proj)} okText="Yes" cancelText="No">
+                    <Popconfirm title="Delete Audit?" icon={<DeleteOutlined/>} onConfirm={() => handleDelete(records.id, records.plant, records.proj)} okText="Yes" cancelText="No">
                         <a>Delete</a><br/>
                     </Popconfirm>
 
