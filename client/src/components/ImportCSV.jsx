@@ -9,6 +9,7 @@ import moment from 'moment'
 
 const ImportCSV = () => {
 
+    var count = 0;
     // Get and parse excel file
     const parse = async (e) => {
         var id = 0;
@@ -61,17 +62,23 @@ const ImportCSV = () => {
                     comm: rows[i][21]
                 })
             }
+            importSetState({
+                visible: false,
+            })
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 500)
         })
         const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
         await fsladb.post(`/history`, {
             info: "Imported Excel File",
             h_date: d
         })
-        setTimeout(() => {
-            importSetState({
-                visible: false,
-            })
-        }, 2000);
+        // setTimeout(() => {
+        //     importSetState({
+        //         visible: false,
+        //     })
+        // }, 2000);
     }
 
     const p = {
@@ -116,6 +123,7 @@ const ImportCSV = () => {
                     footer={null}
             >
                 <input className="file-uploader" type="file" id="fileUpload" accept=".xlsx, .xls" onChange={(e) => parse(e)}/>
+                <br/><br/>(After loading the file wait until this box closes)
             </Modal>
         </div>
     )
