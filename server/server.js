@@ -242,7 +242,7 @@ app.delete("/api/v1/details/:id", async (req, res) => {
     }
 })
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`server is listening on port ${port}`);
 });

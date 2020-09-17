@@ -313,7 +313,7 @@ const MyTable = () => {
             ],
             onFilter: ((value, record) => record.au_stat.indexOf(value) === 0),
             render: dataIndex => (
-                dataIndex = dataIndex.toLowerCase() &&
+                dataIndex = dataIndex.toLowerCase()  &&
                 <Tag color={dataIndex === 'performed' ? 'green' : (dataIndex === 'canceled' ? 'red' : (dataIndex === 'finished' ? 'blue' : ''))}>{dataIndex}</Tag>
             ),
             sorter: ((a, b) => compareAlpha(a.au_stat, b.au_stat)),

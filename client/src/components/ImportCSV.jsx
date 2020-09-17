@@ -15,51 +15,51 @@ const ImportCSV = () => {
         var id = 0;
         readXlsxFile(e.target.files[0]).then(async (rows) => {
             const sz = rows.length - 1;
+            console.log(sz)
             for(var i = 1; i <= sz; i++) {
-                if(JSON.stringify(rows[i].slice(1,11)) === JSON.stringify(rows[i-1].slice(1,11))) {
-                    console.log(rows[i].slice(11,22))
+                console.log(rows[i])
+                if((JSON.stringify(rows[i].slice(0,8)) === JSON.stringify(rows[i-1].slice(0,8)))) {
+                    console.log(rows[i][11])
                     await fsladb.post(`/details/${id}`, {
-                        dom: rows[i][11],
-                        dom_loc: rows[i][12],
-                        fsml_r: rows[i][13],
-                        issue: rows[i][14],
-                        c_actions: rows[i][15],
-                        a_res: rows[i][16],
-                        a_rev: rows[i][17],
-                        a_due: moment(rows[i][18]).utc().local().format('YYYY-MM-DD'),
-                        a_stat: rows[i][19],
-                        last_rev: moment(rows[i][20]).utc().local().format('YYYY-MM-DD'),
-                        comm: rows[i][21]
+                        dom: rows[i][9],
+                        dom_loc: rows[i][10],
+                        fsml_r: rows[i][12],
+                        issue: rows[i][13],
+                        c_actions: rows[i][14],
+                        a_res: rows[i][15],
+                        a_rev: rows[i][16],
+                        a_due: moment(rows[i][17], "DD.MM.YY").utc().local().format('YYYY.MM.DD'),
+                        a_stat: rows[i][18],
+                        last_rev: moment(rows[i][19], "DD.MM.YY").utc().local().format('YYYY.MM.DD'),
+                        comm: rows[i][20]
                     })
                     continue;
                 }
-                console.log(rows[i].slice(1,11))
                 const result = await fsladb.post(`/records`, {
-                    fy: rows[i][1],
-                    plant: rows[i][2],
-                    bu: rows[i][3],
-                    pg: rows[i][4],
-                    au_stat: rows[i][5],
-                    proj: rows[i][6],
-                    country: rows[i][7],
-                    lead_aud: rows[i][8],
-                    co_aud: rows[i][9],
-                    fsml_t: rows[i][10]
+                    fy: rows[i][0],
+                    plant: rows[i][1],
+                    bu: rows[i][2],
+                    pg: rows[i][3],
+                    au_stat: rows[i][4],
+                    proj: rows[i][5],
+                    country: rows[i][6],
+                    lead_aud: rows[i][7],
+                    co_aud: rows[i][8],
+                    fsml_t: rows[i][11]
                 });
                 id = result.data.records.id
-                console.log(rows[i].slice(11,22))
                 await fsladb.post(`/details/${id}`, {
-                    dom: rows[i][11],
-                    dom_loc: rows[i][12],
-                    fsml_r: rows[i][13],
-                    issue: rows[i][14],
-                    c_actions: rows[i][15],
-                    a_res: rows[i][16],
-                    a_rev: rows[i][17],
-                    a_due: moment(rows[i][18]).utc().local().format('YYYY-MM-DD'),
-                    a_stat: rows[i][19],
-                    last_rev: moment(rows[i][20]).utc().local().format('YYYY-MM-DD'),
-                    comm: rows[i][21]
+                    dom: rows[i][9],
+                    dom_loc: rows[i][10],
+                    fsml_r: rows[i][12],
+                    issue: rows[i][13],
+                    c_actions: rows[i][14],
+                    a_res: rows[i][15],
+                    a_rev: rows[i][16],
+                    a_due: moment(rows[i][17], "DD.MM.YY").utc().local().format('YYYY.MM.DD'),
+                    a_stat: rows[i][18],
+                    last_rev: moment(rows[i][19], "DD.MM.YY").utc().local().format('YYYY.MM.DD'),
+                    comm: rows[i][20]
                 })
             }
             importSetState({
@@ -69,7 +69,7 @@ const ImportCSV = () => {
                 window.location.reload(false);
             }, 500)
         })
-        const d = moment(new Date()).utc().local().format('YYYY.MM.DD HH:mm:ss');
+        const d = moment(new Date()).utc().local().format('DD.MM.YYYY HH:mm:ss');
         await fsladb.post(`/history`, {
             info: "Imported Excel File",
             h_date: d
