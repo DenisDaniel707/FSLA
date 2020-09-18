@@ -612,7 +612,7 @@ const View = () => {
     return (
         <Layout className="site-layout-background" style={{ padding: '0px 0' }}>
             <MyHeader/>
-            <Content style={{ padding: '10px 40px', minHeight: 793}} >
+            <Content style={{ padding: '10px 20px', minHeight: 793}} >
 
                 {/* Breadcrumbs */}
                 <Breadcrumb style={{ margin: '15px 35px', textAlign: 'left' }}>
