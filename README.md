@@ -1,3 +1,3 @@
-# FSLA
+# FSLA - Database Management Tool
 
-Database management tool
+Built using Node.js with Express, Postgres and React with AntDesign
